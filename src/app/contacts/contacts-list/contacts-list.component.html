@@ -1,0 +1,19 @@
+<table class="table table-dark table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Lp</th>
+            <th>Nazwisko</th>
+            <th>Imię</th>
+            <th>Numer telefonu</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let contact of data; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ contact.lastname }}</td>
+            <td>{{ contact.firstname }}</td>
+            <td>{{ contact.phoneNumber }}</td>
+        </tr>
+    </tbody>
+</table>
+<button>Dodaj</button>
