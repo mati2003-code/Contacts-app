@@ -1,19 +1,51 @@
-<table>
-    <thead>
-        <tr>
-            <th>Lp</th>
-            <th>Nazwisko</th>
-            <th>Imię</th>
-            <th>Numer telefonu</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let contact of data; let i = index">
-            <td>{{ i + 1 }}</td>
-            <td>{{ contact.lastname }}</td>
-            <td>{{ contact.firstname }}</td>
-            <td>{{ contact.phoneNumber }}</td>
-        </tr>
-    </tbody>
-</table>
-<button>Dodaj</button>
+<table *ngIf="dataSource.length > 0; else contactsAlert" mat-table [dataSource]="dataSource">
+    <!-- Position Column -->
+    <ng-container matColumnDef="lp">
+      <th mat-header-cell *matHeaderCellDef> Lp </th>
+      <td mat-cell *matCellDef="let element; let i = index"> {{ i + 1 }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="surname">
+      <th mat-header-cell *matHeaderCellDef> Nazwisko </th>
+      <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="firstname">
+      <th mat-header-cell *matHeaderCellDef> Imię </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef> Miejscowość </th>
+      <td mat-cell *matCellDef="let element"> {{element.city}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Opcje </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" matTooltip="Podgląd">
+            <mat-icon>visibility</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" matTooltip="Edycja">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" matTooltip="Usuń">
+            <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <ng-template #contactsAlert>
+    <p class="info">Aktualnie brak kontaktów</p>
+  </ng-template>
+
+  <button mat-fab color="primary" matTooltip="Dodaj nowy kontakt">
+    <mat-icon>add</mat-icon>
+  </button>
+
+  
+  
