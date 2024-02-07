@@ -24,4 +24,12 @@ export class ContactsListComponent {
       this.dataSource = data;
     });
   }
+
+  delContact(idContact: number): void {
+    const conf = confirm('Czy napewno chcesz usunąć daną pozycję?');
+    if(conf) this.contactsService.removeContact(idContact).subscribe(data => {
+      // console.log(data);
+      if(data.status === 'ok') this.loadContacts();
+    });
+  }
 }
