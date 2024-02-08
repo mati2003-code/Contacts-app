@@ -32,14 +32,14 @@
         <button mat-icon-button color="accent" matTooltip="Edycja">
             <mat-icon>edit</mat-icon>
         </button>
-        <button (click)="delContact(element.id)" mat-icon-button color="warn" matTooltip="Usuń">
+        <button (click)="delContact($event, element.id)" mat-icon-button color="warn" matTooltip="Usuń">
             <mat-icon>delete</mat-icon>
         </button>
       </td>
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr [routerLink]="['/contact-view', row.id]" mat-row *matRowDef="let row; columns: displayedColumns;" class="pointer"></tr>
   </table>
 
   <ng-template #contactsAlert>

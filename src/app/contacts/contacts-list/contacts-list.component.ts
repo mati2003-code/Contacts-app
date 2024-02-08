@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ContactModel } from '../../models/contact-model';
 import { ContactsService } from '../contacts.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-contacts-list',
@@ -13,23 +14,34 @@ export class ContactsListComponent {
 
   dataSource: ContactModel[] = [];
 
+  private sub = new Subscription;
+
   constructor(private contactsService: ContactsService) {}
 
   ngOnInit() {
+    // alert('Widok zostal załadowany');
     this.loadContacts();
   }
 
   loadContacts(): void {
-    this.contactsService.getContacts().subscribe(data => {
+   const subLoadContacts =  this.contactsService.getContacts().subscribe(data => {
       this.dataSource = data;
     });
+    this.sub.add(subLoadContacts);
   }
 
-  delContact(idContact: number): void {
+  delContact(e: Event, idContact: number): void {
+    e.stopPropagation();
     const conf = confirm('Czy napewno chcesz usunąć daną pozycję?');
-    if(conf) this.contactsService.removeContact(idContact).subscribe(data => {
-      // console.log(data);
+    if(conf) {
+     const subDelContact = this.contactsService.removeContact(idContact).subscribe(data => {
       if(data.status === 'ok') this.loadContacts();
     });
+    this.sub.add(subDelContact);
+   }
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }
