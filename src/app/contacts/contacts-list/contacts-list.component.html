@@ -29,7 +29,7 @@
         <button mat-icon-button color="primary" matTooltip="Podgląd">
             <mat-icon>visibility</mat-icon>
         </button>
-        <button mat-icon-button color="accent" matTooltip="Edycja">
+        <button (click)="openAddModComponent($event, element.id)" mat-icon-button color="accent" matTooltip="Edycja">
             <mat-icon>edit</mat-icon>
         </button>
         <button (click)="delContact($event, element.id)" mat-icon-button color="warn" matTooltip="Usuń">
@@ -46,7 +46,7 @@
     <p class="info">Aktualnie brak kontaktów</p>
   </ng-template>
 
-  <button mat-fab color="primary" matTooltip="Dodaj nowy kontakt">
+  <button (click)="openAddModComponent($event)" mat-fab color="primary" matTooltip="Dodaj nowy kontakt">
     <mat-icon>add</mat-icon>
   </button>
 

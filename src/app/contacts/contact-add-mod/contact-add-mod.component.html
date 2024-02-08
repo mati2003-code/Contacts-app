@@ -1,0 +1,37 @@
+<div class="boxDialog">
+    <h2 *ngIf="showAdd">Dodawanie nowego kontaktu</h2>
+    <h2 *ngIf="showMod" >Modyfikacja kontaktu</h2>
+    
+    <form>
+        <mat-form-field appearance="outline">
+            <mat-label>Nazwisko</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Imię</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Numer Telefonu</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Adres Email</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Miasto</mat-label>
+            <input matInput>
+        </mat-form-field>
+
+        <button mat-stroked-button color="warn">
+            <mat-icon>close</mat-icon>Zamknij
+        </button>
+        <button *ngIf="showAdd" mat-stroked-button color="primary">
+            <mat-icon>save</mat-icon>Zapisz
+        </button>
+        <button *ngIf="showMod" mat-stroked-button color="primary">
+            <mat-icon>edit</mat-icon>Zapisz
+        </button>
+    </form>
+</div>

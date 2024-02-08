@@ -1,10 +1,10 @@
 <app-header>
     <p content>Szczegóły wybranego kontaktu</p>
 </app-header>
-<p>Nazwisko: </p>
-<p>Imię: </p>
-<p>Miejscowość: </p>
-<p>Numer telefonu: </p>
-<p>Adres email: </p>
+<p>Nazwisko: {{ contactDetails.surname }}</p>
+<p>Imię: {{contactDetails.firstname }}</p>
+<p>Miejscowość: {{ contactDetails.city }}</p>
+<p>Numer telefonu: {{ contactDetails.phoneNumber }}</p>
+<p>Adres email: {{ contactDetails.email }}</p>
 
 <button [routerLink]="['/contacts-list']" mat-raised-button color="primary">Wstecz</button>

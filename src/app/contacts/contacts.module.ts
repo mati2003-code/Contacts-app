@@ -8,22 +8,30 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { SharedModule } from '../shared/shared.module';
 import { ContactViewComponent } from './contact-view/contact-view.component';
 import { RouterModule } from '@angular/router';
+import { ContactAddModComponent } from './contact-add-mod/contact-add-mod.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 
 @NgModule({
   declarations: [
     ContactsListComponent,
-    ContactViewComponent
+    ContactViewComponent,
+    ContactAddModComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
+    RouterModule,
     MatTableModule,
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
-    RouterModule
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   exports: [
     ContactsListComponent

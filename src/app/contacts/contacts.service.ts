@@ -15,6 +15,12 @@ export class ContactsService  {
     return this.httpClient.get(`${this.baseApiUrl}/contacts`);
   }
 
+
+
+  getContact(id: number): Observable<any> {
+    return this.httpClient.get(`${this.baseApiUrl}/contact/${id}`);
+  }
+
   removeContact(id: number): Observable<any> {
     return this.httpClient.delete(`${this.baseApiUrl}/contact/${id}`);
   }
