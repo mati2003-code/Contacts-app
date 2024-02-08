@@ -56,7 +56,7 @@ export class ContactsListComponent {
     dialogConfig.width = '90%';
     dialogConfig.height = '90%';
 
-    // dialogConfig.disableClose = true;
+    dialogConfig.disableClose = true;
 
     dialogConfig.data = {
       idContact
@@ -65,7 +65,9 @@ export class ContactsListComponent {
     const dialogRef = this.dialog.open(ContactAddModComponent, dialogConfig);
   
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      if(result.reload === 1) {
+        this.loadContacts();
+      }
     });
   }
 
